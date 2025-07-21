@@ -27,6 +27,8 @@ namespace Game {
     
     static void Main(string[] args) {
       string[] board = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+	  Console.WriteLine("Welcome to Tic Tac Toe! Choose numbers between 1 - 9 to place an X/O.");
+	  Console.WriteLine("Player 1 is X's, Player 2 is O's!");
       
       bool isPlayer1Turn = true;
       int numTurns = 0;
@@ -42,12 +44,11 @@ namespace Game {
             if (board[i*3+j] == choice && choice != "X" && choice != "O") {
               int boardIndex = Convert.ToInt32(choice) - 1;
               if (isPlayer1Turn == true) board[boardIndex] = "X"; else board[boardIndex] = "O";
-              numTurns++;
+			  numTurns++;
+			  isPlayer1Turn = !isPlayer1Turn;
             }
           }
         }
-        
-        isPlayer1Turn = !isPlayer1Turn;
       }
       
       if (CheckVictory(board) && isPlayer1Turn == false) {
