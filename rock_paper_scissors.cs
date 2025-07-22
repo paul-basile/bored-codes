@@ -1,23 +1,20 @@
 using System;
 using System.Collections.Generic;
-
 namespace Game {
 	class RPS
 	{
 		//scores and rule dictionary
 		static Dictionary<char, char> whatBeatsWhat = new Dictionary<char, char> {
-			{'R', 'S'},
-			{'S', 'P'},
-			{'P', 'R'}
-		};
-			
+        		{'R', 'S'},
+        		{'S', 'P'},
+        		{'P', 'R'}
+        	};
 		//if the score is 3 for one player, they win
 		static bool CheckWin(int playerScore, int aiScore) {
 			if (playerScore == 3 || aiScore == 3) return true; else return false;
 		}
 		
-		static void Main()
-		{
+		static void Main() {
 			int playerScore = 0, aiScore = 0;
 			Random rnd = new Random();
 			string chars = "RPS";
@@ -26,8 +23,14 @@ namespace Game {
 			while (!CheckWin(playerScore, aiScore)) {
 				Console.WriteLine("Input R for Rock, P for Paper, S for Scissors.");
 				char choice = Convert.ToChar(Console.ReadLine().ToUpper());	//your pick
-    			int num = rnd.Next(0, chars.Length);
-    			char aiChoice = chars[num]; //ai pick
+				
+		                if (!"RPS".Contains(choice)) {
+		                    Console.WriteLine("Invalid input. Please enter R, P, or S.");
+		                    continue;
+		                }
+
+    				int num = rnd.Next(0, chars.Length);
+    				char aiChoice = chars[num]; //ai pick
 				Console.WriteLine("AI Choice: " + aiChoice);
 				
 				//who won the round?
@@ -41,12 +44,15 @@ namespace Game {
 				} else {
 					Console.WriteLine("Tie, no points!");
 				}
-				
-				
+		
 				Console.WriteLine("Current Scores\nPlayer: " + playerScore);
 				Console.WriteLine("Computer Score: " + aiScore);
-				CheckWin(playerScore, aiScore);
 			}
+			
+			if (playerScore == 3)
+		        	Console.WriteLine("You won!");
+		        else
+		        	Console.WriteLine("The computer won! Good game.");
 		}
 	}
 }
