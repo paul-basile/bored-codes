@@ -90,7 +90,7 @@ class Program
 			Console.WriteLine($"You guessed the correct word, {randWord}, in {guessAttempts} attempts! Nice job!");
 		} else {
 			printGrid(wordleGrid);
-			Console.WriteLine($"The correct word was: {randWord}. Good tries!");
+			Console.WriteLine($"The correct word was: {randWord}. Good try!");
 		}
 	}
 }
