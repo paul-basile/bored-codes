@@ -97,5 +97,7 @@ class Program
 		
 		printGrid(wordleGrid);
 		
+		Console.WriteLine($"The correct word was: {randWord}!");
+		
 	}
 }
